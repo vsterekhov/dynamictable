@@ -1,1 +1,23 @@
-<p>main-layout works!</p>
+<div>
+    <form action="" [formGroup]="form">
+        <div class="form-input">
+            <mat-form-field>
+            <mat-label>Rows</mat-label>
+            <input matInput formControlName="rows"
+                placeholder="max value: {{MAX_RANGE}}"
+                autocomplete="off">
+            </mat-form-field>
+        </div>
+        
+        <div class="form-input">
+            <mat-form-field>
+            <mat-label>Columns</mat-label>
+            <input matInput formControlName="cols"
+                placeholder="max value: {{MAX_RANGE}}"
+                autocomplete="off">
+            </mat-form-field>
+        </div>
+    </form>
+</div>
+
+<app-dynamic-table [rows]="rows$ | async" [cols]="cols$ | async"></app-dynamic-table>
