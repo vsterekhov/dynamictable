@@ -4,24 +4,24 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
-## Code scaffolding
+## Описание задачи
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Создать страницу, содержащую два поля ввода и таблицу N строк на M столбцом, где N и M - значения, получаемые из полей ввода.
 
-## Build
+Таблица должна быть динамической - т.е. автоматически перестраиваться, при изменении значений в полях ввода.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Контент таблицы генерируется случайным образом (случайные числа от 1 до 150).
 
-## Running unit tests
+У таблицы есть строка с заголовком колонок и столбец с заголовком строк - числа от 1 до M и 1 до N соответственно. заголовки должны быть выделены другим стилем, а также они должны быть "липкими", чтобы при скролле страницы они не пропадали из поля зрения.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Общее описание реализации
 
-## Running end-to-end tests
+Подключен angular material. Созданы два компонента: 
+1. main-layout - вложен в app-component и реализует поля ввода числовых значений;
+2. dynamic-table - вложен в main-layout и реализует саму динамическую таблицу.
+Количество строк и столбцов передается в dynamic-table через входные свойства.
+На полях ввода подключены обработчики, предотвращающие ввод нечисловых символов(как с клавиатуры, так и путем вставки через copy-paste), а также ввод чисел, превыщающих максимально допустимый диапазон.
+Стратегия обнаружения изменений в компоненте dynamic-table изменена на OnPush.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
